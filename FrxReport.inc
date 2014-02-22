@@ -365,7 +365,7 @@ class FrxReport {
     }
 
     if ($render_form && !$this->rpt_xml->xpath('//*[@frx:renderer="FrxParameterForm"]') && $format=='web') {
-      $variables = array('collapse' => $this->blocks_loaded);
+      $variables = array('collapsed' => $this->blocks_loaded);
       $form = $this->parametersForm($variables);
       $o = drupal_render($form) . $o;
     }
