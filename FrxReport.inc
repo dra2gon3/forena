@@ -275,7 +275,14 @@ class FrxReport {
                 $id_attr = $attrs['id'] . '-' . $i;
               }
             }
-            $tmp_attrs['id'] =  $id_attr;
+            // check if we should skip the id for this element
+            $frx = $node->attributes(FRX_NS);
+            $skip_id = isset($frx['skip_id']) && $frx['skip_id'];
+            if (!$skip_id) {
+              $tmp_attrs['id'] =  $id;
+            } else {
+              unset($tmp_attrs['id']);
+            }
           }
 
           if (@!$settings['noHelperClasses']) {
